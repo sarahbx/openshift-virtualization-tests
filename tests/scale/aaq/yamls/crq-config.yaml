@@ -1,0 +1,11 @@
+---
+quota:
+  hard:
+  requests.memory: 4000Gi
+  requests.cpu/vmi: "2000"
+  requests.memory/vmi: 4000Gi
+selector:
+  annotations: null
+  labels:
+    matchLabels:
+      aaq-test: test

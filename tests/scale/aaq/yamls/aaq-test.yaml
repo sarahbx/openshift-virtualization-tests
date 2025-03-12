@@ -1,0 +1,12 @@
+---
+apiVersion: aaq.kubevirt.io/v1alpha1
+kind: AAQ
+metadata:
+  name: aaq-test
+spec:
+  configuration:
+    vmiCalcConfigName: "DedicatedVirtualResources"
+    allowApplicationAwareClusterResourceQuota: false
+  namespaceSelector:
+    matchLabels:
+      aaq-test: "test"

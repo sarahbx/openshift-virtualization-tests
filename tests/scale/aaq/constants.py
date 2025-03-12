@@ -1,0 +1,1 @@
+ALLOW_AACRQ_PARAM = "allow_application_aware_cluster_resource_quota"

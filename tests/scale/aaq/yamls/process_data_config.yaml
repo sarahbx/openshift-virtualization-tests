@@ -1,0 +1,46 @@
+combined_operations:
+  deployed_and_scheduled:
+    - deploy
+    - scheduled
+operation_order:
+  - deploy
+  - scheduled
+  - deployed_and_scheduled
+  - delete
+test_order:
+  - baseline
+  - rq
+  - aaq_aarq
+  - hco_aarq
+  - crq
+  - aaq_aacrq
+  - hco_aacrq
+dataset_count:
+  operation: deployed_and_scheduled
+  datasets:
+    - rq
+    - crq
+grid:
+  visible: true
+  which: both
+  axis: x
+plot:
+  kind: barh
+pre_process:
+  assert_pass: true
+  remove_test_prefix: test_scale_
+fig_text:
+  - text: "Dataset counts: {dataset_count}"
+    fontsize: 10
+    x: 0.05
+    y: 0.95
+  - text: "AAQ at Scale - 2000 VM Resources"
+    fontsize: 20
+    x: 0.10
+    y: 0.90
+legend_config:
+  loc: 'outside upper right'
+file_output:
+  dpi: 300.0
+  width: 11
+  height: 8.5

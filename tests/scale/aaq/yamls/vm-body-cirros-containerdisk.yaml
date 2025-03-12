@@ -1,0 +1,39 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: VM_NAME
+spec:
+  instancetype:
+    kind: VirtualMachineClusterInstancetype
+    name: cirros-test
+  preference:
+    kind: VirtualMachineClusterPreference
+    name: cirros
+  runStrategy: Always
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          disks:
+          - name: containerdisk
+            disk:
+              bus: virtio
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+        machine:
+          type: pc-q35-rhel9.2.0
+        resources: {}
+      volumes:
+      - name: containerdisk
+        containerDisk:
+          image: quay.io/kubevirt/cirros-container-disk-demo:20250328_e86b23aa1f
+      - cloudInitNoCloud:
+          userData: |
+            #!/bin/sh
+
+            echo 'printed from cloud-init userdata'
+        name: cloudinitdisk

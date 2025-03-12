@@ -1,0 +1,12 @@
+---
+quota:
+  hard:
+  requests.memory: 200Gi
+#  limits.memory: 1Gi
+  requests.cpu/vmi: "100"
+  requests.memory/vmi: 200Gi
+selector:
+  annotations: null
+  labels:
+    matchLabels:
+      kubernetes.io/metadata.name: default

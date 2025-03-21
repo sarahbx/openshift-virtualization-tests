@@ -79,6 +79,16 @@ def setup_logging(log_level, log_file="/tmp/pytest-tests.log"):
     basic_logger.setLevel(level=log_level)
     basic_logger.addHandler(hdlr=basic_log_queue_handler)
 
+    # Support for asyncio logger
+    # https://docs.python.org/3/library/asyncio-dev.html#logging
+    asyncio_log_queue_handler = QueueHandler(queue=log_queue)
+    asyncio_log_queue_handler.set_name(name="asyncio")
+    asyncio_log_queue_handler.setFormatter(fmt=root_log_formatter)
+
+    asyncio_logger = logging.getLogger("asyncio")
+    asyncio_logger.setLevel(level=log_level)
+    asyncio_logger.addHandler(hdlr=asyncio_log_queue_handler)
+
     root_log_queue_handler = QueueHandler(queue=log_queue)
     root_log_queue_handler.set_name(name="root")
     root_log_queue_handler.setFormatter(fmt=root_log_formatter)
@@ -90,6 +100,7 @@ def setup_logging(log_level, log_file="/tmp/pytest-tests.log"):
 
     root_logger.propagate = False
     basic_logger.propagate = False
+    asyncio_logger.propagate = False
 
     log_listener.start()
     return log_listener

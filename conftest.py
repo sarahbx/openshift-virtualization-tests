@@ -22,6 +22,7 @@ from _pytest.reports import CollectReport, TestReport
 from _pytest.runner import CallInfo
 from kubernetes.dynamic.exceptions import ConflictError
 from ocp_resources.resource import get_client
+from ocp_scale_utilities.logger import setup_logging
 from pyhelper_utils.shell import run_command
 from pytest import Item
 from pytest_testconfig import config as py_config
@@ -37,7 +38,6 @@ from utilities.data_collector import (
 )
 from utilities.database import Database
 from utilities.exceptions import MissingEnvironmentVariableError, StorageSanityError
-from utilities.logger import setup_logging
 from utilities.pytest_utils import (
     config_default_storage_class,
     deploy_run_in_progress_config_map,

@@ -1115,6 +1115,7 @@ class TestWaitForMcpUpdateEnd:
             timeout=custom_timeout,
             sleep=TIMEOUT_5SEC,
         )
+        mock_wait_ready.assert_called_once_with(machine_config_pools_list=[mock_mcp])
 
 
 class TestWaitForMcpUpdateStart:
